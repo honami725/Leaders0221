@@ -11,6 +11,10 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
+    private var contentArray: [String] = [String]()
+    private var idArray: [String] = []
+    private var id: String!
+    private var text: String!
     
 
     override func viewDidLoad() {
@@ -20,9 +24,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
+        //カスタムセルを登録
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "Cell")
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -40,18 +47,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! TableViewCell
-//        cell.label.text = 
+        cell.label.text = contentArray[indexPath.row]
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return contentArray.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        id = idArray[indexPath.row]
+        text = contentArray[indexPath.row]
+        performSegueWithIdentifier("toUpdate", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toUpdate" {
             let updateVC = segue.destinationViewController as! UpdateAndDeleteViewController
-            
+            updateVC.id = self.id
+            updateVC.text = self.text
         }
     }
     

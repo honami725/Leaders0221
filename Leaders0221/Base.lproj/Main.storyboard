@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4LI-dz-SGn">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -18,15 +18,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ePq-W2-g4v">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CHN-Dx-iur">
+                            <connections>
+                                <segue destination="oV2-ny-4J6" kind="push" id="6mJ-Eg-FlA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="O1G-Be-lw2" kind="push" identifier="toUpdate" id="AA4-Ho-ljf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="202.66666666666666" y="300.56666666666666"/>
+            <point key="canvasLocation" x="734" y="300"/>
         </scene>
-        <!--View Controller-->
+        <!--Update And Delete View Controller-->
         <scene sceneID="dZo-TR-H60">
             <objects>
-                <viewController id="O1G-Be-lw2" sceneMemberID="viewController">
+                <viewController id="O1G-Be-lw2" customClass="UpdateAndDeleteViewController" customModule="Leaders0221" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3B5-LN-Z7n"/>
                         <viewControllerLayoutGuide type="bottom" id="Vz6-zm-R91"/>
@@ -34,17 +44,35 @@
                     <view key="view" contentMode="scaleToFill" id="WVe-0b-3cc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OvB-B5-gjq">
+                                <rect key="frame" x="54" y="102" width="213" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0d-2t-cF1">
+                                <rect key="frame" x="91" y="231" width="138" height="76"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="post:" destination="O1G-Be-lw2" eventType="touchUpInside" id="ujM-na-S3P"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="RI3-cG-7x8"/>
+                    <connections>
+                        <outlet property="textField" destination="OvB-B5-gjq" id="qG2-w4-YMp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0h-VX-aEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="246" y="-413"/>
+            <point key="canvasLocation" x="734" y="-389"/>
         </scene>
-        <!--View Controller-->
+        <!--Add View Controller-->
         <scene sceneID="Hs4-s6-eqv">
             <objects>
-                <viewController id="oV2-ny-4J6" sceneMemberID="viewController">
+                <viewController id="oV2-ny-4J6" customClass="AddViewController" customModule="Leaders0221" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T4h-le-aQE"/>
                         <viewControllerLayoutGuide type="bottom" id="Yh6-Xi-kvl"/>
@@ -56,6 +84,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76z-Y6-SDp">
                                 <rect key="frame" x="137" y="236" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="post:" destination="oV2-ny-4J6" eventType="touchUpInside" id="CFF-KQ-ur0"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XgD-1S-Cez">
                                 <rect key="frame" x="20" y="101" width="280" height="30"/>
@@ -65,10 +96,32 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="lzb-jV-A7m"/>
+                    <connections>
+                        <outlet property="textField" destination="XgD-1S-Cez" id="C89-87-rBo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zKp-Yf-Mw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="623" y="300"/>
+            <point key="canvasLocation" x="1151" y="300"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="f8G-rt-51S">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4LI-dz-SGn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0cC-r1-Ayv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Edp-0c-ifm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adR-H3-uKN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="202" y="300"/>
         </scene>
     </scenes>
 </document>

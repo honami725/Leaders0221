@@ -23,7 +23,23 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func post(sender: UIButton) {
+        if textField.text != ""{
+            self.create()
+        }else {
+            showAlert()
+        }
+    }
+    //生成
     func create() {
+        
+    }
+    
+    //TextFieldに入力していない場合に、Alertを表示
+    func showAlert() {
+        let alert = UIAlertController(title: "文字を入力してください", message: "文字を入力せずに、POSTはできません", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
         
     }
     

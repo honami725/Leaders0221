@@ -8,14 +8,17 @@
 
 import UIKit
 
-class UpdateAndDeleteViewController: UIViewController {
+class UpdateAndDeleteViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textField: UITextField!
+    var id: String!
+    var text: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        textField.delegate = self
+        let deleteButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Trash, target: self, action: "delete")
+        self.navigationItem.rightBarButtonItem = deleteButton
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,6 +26,14 @@ class UpdateAndDeleteViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        textField.text = text
+    }
+    
+    @IBAction func post(sender: UIButton) {
+        self.update()
+    }
     //更新
     func update() {
         
